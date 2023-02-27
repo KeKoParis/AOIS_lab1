@@ -1,7 +1,13 @@
 package main
 
-import "lab1/bno"
+import (
+	"fmt"
+	"lab1/bno"
+)
 
 func main() {
-	bno.ConvertToBin(-5.1)
+	var binNum [][]float64
+	binNum = bno.ConvertToBin(5.25)
+
+	fmt.Println(binNum)
 }

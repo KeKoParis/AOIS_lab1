@@ -1,15 +1,17 @@
 package bno // Package bno is "binary numbers operations"
 
 import (
-	"fmt"
 	"math"
 )
 
-func ConvertToBin(number float64) {
-	//fmt.Println(convertIntPart(number))
-	//fmt.Println(convertFracPart(number))
-	fmt.Println(formMantissa(math.Abs(number)))
-	fmt.Println(formMantissa(number))
+func ConvertToBin(number float64) [][]float64 {
+	var binNum [][]float64
+
+	binMantissa, exp := formMantissa(number)
+
+	binNum = append(binNum, getSign(number), calcExp(exp), binMantissa)
+
+	return binNum
 }
 
 func formMantissa(number float64) ([]float64, float64) {
@@ -17,14 +19,18 @@ func formMantissa(number float64) ([]float64, float64) {
 	var exp float64
 	mantissa = append(convertIntPart(number), convertFracPart(number)...)
 
-	if len(mantissa) == 71 && mantissa[0] == 1 {
+	if len(mantissa) == 72 && mantissa[0] == 1 {
 		exp = 0
+		mantissa = mantissa[1:53]
 	}
-	if len(mantissa) > 71 {
-		exp = float64(len(mantissa) - 71)
+	if len(mantissa) > 72 {
+		exp = float64(len(mantissa) - 72)
+		mantissa = mantissa[1:53]
 	}
-	if len(mantissa) == 71 && mantissa[0] == 0 {
+
+	if len(mantissa) == 72 && mantissa[0] == 0 {
 		exp = getExp(mantissa)
+		mantissa = mantissa[int(math.Abs(exp)) : int(math.Abs(exp))+53]
 	}
 
 	if number < 0 {
@@ -32,8 +38,7 @@ func formMantissa(number float64) ([]float64, float64) {
 		addOne(&mantissa)
 	}
 
-	exp = exp + 1024
-	mantissa = mantissa[:53]
+	exp = exp + 1023
 	return mantissa, exp
 }
 
@@ -119,6 +124,31 @@ func addOne(mantissa *[]float64) {
 	}
 }
 
-func calcExp() {
+func calcExp(number float64) []float64 {
+	var rawExp, exp []float64
 
+	for i := 0; i < 11; i++ {
+		exp = append(exp, 0)
+	}
+
+	rawExp = convertIntPart(number)
+
+	for i := len(rawExp) - 1; i >= 0; i-- {
+		exp[11-len(rawExp)+i] = rawExp[i]
+	}
+
+	return exp
+}
+
+func getSign(number float64) []float64 {
+	var numSign []float64
+
+	if number >= 0 {
+		numSign = append(numSign, 0)
+
+	} else {
+		numSign = append(numSign, 1)
+	}
+
+	return numSign
 }
