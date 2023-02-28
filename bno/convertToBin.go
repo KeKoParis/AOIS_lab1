@@ -4,6 +4,8 @@ import (
 	"math"
 )
 
+// ConvertToBin function converts decimal numbers to binary.
+// Returns floating format number (IEEE-754, 64bit).
 func ConvertToBin(number float64) [][]float64 {
 	var binNum [][]float64
 
@@ -14,6 +16,8 @@ func ConvertToBin(number float64) [][]float64 {
 	return binNum
 }
 
+// formMantissa function forms mantissa from integer
+// and fractional parts of a decimal number.
 func formMantissa(number float64) ([]float64, float64) {
 	var mantissa []float64
 	var exp float64
@@ -42,6 +46,8 @@ func formMantissa(number float64) ([]float64, float64) {
 	return mantissa, exp
 }
 
+// getExp function finds exponent for a decimal number, which
+// absolute value is less than one.
 func getExp(mantissa []float64) float64 {
 	for i := 1; i < len(mantissa); i++ {
 		if mantissa[i] == 1 {
@@ -51,6 +57,7 @@ func getExp(mantissa []float64) float64 {
 	return 71
 }
 
+// convertIntPart function converts integer part of a number to binary.
 func convertIntPart(number float64) []float64 { // converts integer part of a number to binary
 	number = math.Floor(math.Abs(number))
 	var binNum, onesPosition, zero []float64
@@ -76,6 +83,8 @@ func convertIntPart(number float64) []float64 { // converts integer part of a nu
 	return binNum
 }
 
+// convertFracPart function converts fractional part of number
+// to binary.
 func convertFracPart(number float64) []float64 {
 	number = math.Abs(number) - math.Floor(math.Abs(number))
 	var binNum []float64
@@ -93,6 +102,8 @@ func convertFracPart(number float64) []float64 {
 	return binNum
 }
 
+// reverse function reverses negative binary numbers according
+// to two's complement.
 func reverse(mantissa *[]float64) {
 	for i := 0; i < len(*mantissa); i++ {
 		if (*mantissa)[i] == 0 {
@@ -103,6 +114,8 @@ func reverse(mantissa *[]float64) {
 	}
 }
 
+// addOne function adds one to reversed binary number
+// according to two's complement.
 func addOne(mantissa *[]float64) {
 	flagZero := 0
 
@@ -124,6 +137,8 @@ func addOne(mantissa *[]float64) {
 	}
 }
 
+// calcExp function finds exponent for numbers, which
+// absolute value is less than one
 func calcExp(number float64) []float64 {
 	var rawExp, exp []float64
 
@@ -140,6 +155,7 @@ func calcExp(number float64) []float64 {
 	return exp
 }
 
+// getSign function finds binary number sign
 func getSign(number float64) []float64 {
 	var numSign []float64
 
