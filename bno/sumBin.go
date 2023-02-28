@@ -4,6 +4,7 @@ import (
 	"math"
 )
 
+// convertExpToDec function converts bin exponent to decimal
 func convertExpToDec(number []float64) float64 {
 	exp := 0.0
 
@@ -15,6 +16,7 @@ func convertExpToDec(number []float64) float64 {
 	return exp
 }
 
+// Summation function summarizes two float bin numbers.
 func Summation(firstNum [][]float64, secondNum [][]float64) [][]float64 {
 	form1, form2, exp := formForSum(firstNum, secondNum)
 	var sum [][]float64
@@ -38,6 +40,8 @@ func Summation(firstNum [][]float64, secondNum [][]float64) [][]float64 {
 	return sum
 }
 
+// formForSum function makes convenient form of bin numbers
+// for summation.
 func formForSum(firstNum [][]float64, secondNum [][]float64) ([]float64, []float64, float64) {
 	var form1, form2 []float64
 	var exp1, exp2, exp float64
@@ -66,6 +70,7 @@ func formForSum(firstNum [][]float64, secondNum [][]float64) ([]float64, []float
 	return form1, form2, exp
 }
 
+// makeBeginning function fills the beginning with sign and zero or one.
 func makeBeginning(number [][]float64) []float64 {
 	var form []float64
 
@@ -74,6 +79,7 @@ func makeBeginning(number [][]float64) []float64 {
 	return form
 }
 
+// makeFull function adds missing the most significant bit.
 func makeFull(number *[]float64) {
 	if (*number)[0] == 0 {
 		*number = append(*number, 1)
@@ -82,11 +88,14 @@ func makeFull(number *[]float64) {
 	}
 }
 
+// appendMantissa function adds mantissa to form number.
 func appendMantissa(form *[]float64, mantissa []float64) {
 	*form = append(*form, mantissa...)
 	*form = (*form)[:55]
 }
 
+// findZeroPos function changes the first one zero to one from position.
+// It changes all ones along the way.
 func findZeroPos(number *[]float64, position int) {
 	for i := position; i >= 0; i-- {
 		if (*number)[i] == 0 {
