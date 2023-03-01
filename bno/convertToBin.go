@@ -1,6 +1,7 @@
 package bno // Package bno is "binary numbers operations"
 
 import (
+	"fmt"
 	"math"
 )
 
@@ -10,6 +11,13 @@ func ConvertToBin(number float64) [][]float64 {
 	var binNum [][]float64
 
 	binMantissa, exp := formMantissa(number)
+	a := (math.Log2(math.Abs(number))) - math.Abs(math.Floor(math.Log2(math.Abs(number))))
+	if a == 0 {
+		reverse(&binMantissa)
+		binMantissa = binMantissa[1:]
+		fmt.Println(binMantissa)
+		exp--
+	}
 
 	binNum = append(binNum, getSign(number), calcExp(exp), binMantissa)
 
@@ -125,6 +133,7 @@ func addOne(mantissa *[]float64) {
 			flagZero = 1
 			break
 		}
+		(*mantissa)[i] = 0
 	}
 
 	if flagZero == 0 {

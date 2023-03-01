@@ -6,10 +6,7 @@ import (
 )
 
 func main() {
-	var binNum [][]float64
-	binNum = bno.ConvertToBin(4)
 
-	fmt.Println(binNum)
-
-	fmt.Println(bno.Summation(bno.ConvertToBin(5.75), bno.ConvertToBin(3.5)))
+	fmt.Println(bno.Summation(bno.ConvertToBin(555.), bno.ConvertToBin(445)))
+	fmt.Println(bno.ConvertToDec(bno.Summation(bno.ConvertToBin(-5.), bno.ConvertToBin(-6))))
 }
