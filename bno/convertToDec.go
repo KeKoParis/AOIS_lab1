@@ -1,7 +1,6 @@
 package bno
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -24,7 +23,7 @@ func ConvertToDec(number [][]float64) float64 {
 		fracPart = append(fracPart, 1)
 	}
 	fracPart = append(fracPart, number[2][int(exp):]...)
-	fmt.Println(intPart)
+
 	decNum = 0
 	for i := 0; i < len(intPart); i++ {
 		decNum += intPart[i] * math.Exp2(float64(len(intPart)-i-1))

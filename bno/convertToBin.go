@@ -1,4 +1,4 @@
-package bno // Package bno is "binary numbers operations"
+package bno // Package bno is "binary numbers sm"
 
 import (
 	"fmt"
