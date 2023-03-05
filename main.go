@@ -15,14 +15,15 @@ func main() {
 	firstValue := *firstNumber
 	secondValue := *secondNumber
 
+	//firstValue := 25.
+	//secondValue := 12.
+
 	var binFloat [][]float64
 	binFloat = bno.Summation(bno.ConvertToBin(firstValue), bno.ConvertToBin(secondValue))
 	fmt.Println(binFloat, "  len mantissa ", len(binFloat[2]))
 
 	fmt.Println(bno.ConvertToDec(bno.Summation(bno.ConvertToBin(firstValue), bno.ConvertToBin(secondValue))))
 
-	firstValue = 27
-	secondValue = 2
 	var firstNum [16]float64
 	var secondNum [16]float64
 

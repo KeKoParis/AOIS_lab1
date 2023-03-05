@@ -1,9 +1,5 @@
 package sm
 
-import (
-	"fmt"
-)
-
 func Div(num1 [16]float64, num2 [16]float64) []float64 {
 	var firstNum, secondNum []float64
 	firstNum = num1[:]
@@ -44,8 +40,6 @@ func Div(num1 [16]float64, num2 [16]float64) []float64 {
 		}
 		division++
 	}
-
-	fmt.Println(division, firstNum)
 
 	division = division * float64(sign1*sign2)
 	return Convert(division)
