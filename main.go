@@ -11,12 +11,11 @@ func main() {
 
 	firstNumber := flag.Float64("firstNumber", 5.155, "user's first number")
 	secondNumber := flag.Float64("secondNumber", 3.25, "user's second number")
+	flag.Parse()
 
+	flag.Parse()
 	firstValue := *firstNumber
 	secondValue := *secondNumber
-
-	//firstValue := 25.
-	//secondValue := 12.
 
 	var binFloat [][]float64
 	binFloat = bno.Summation(bno.ConvertToBin(firstValue), bno.ConvertToBin(secondValue))
