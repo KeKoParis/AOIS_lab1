@@ -13,8 +13,8 @@ func ConvToDec(number []float64) float64 {
 		sign = 1
 	}
 
-	for i := 0; i < 16; i++ {
-		decNum = decNum + math.Exp2(float64(15-i))*number[i]
+	for i := 0; i < size; i++ {
+		decNum = decNum + math.Exp2(float64(size-1-i))*number[i]
 	}
 
 	if sign == -1 {

@@ -38,7 +38,7 @@ func getBin(number float64) []float64 {
 	}
 
 	for i := 0; i < len(onesPlace); i++ {
-		binNumber[16-int(onesPlace[i])-1] = 1
+		binNumber[size-int(onesPlace[i])-1] = 1
 	}
 
 	return binNumber
@@ -47,7 +47,7 @@ func getBin(number float64) []float64 {
 func getZero() []float64 {
 	var binNumber []float64
 
-	for i := 0; i < 16; i++ {
+	for i := 0; i < size; i++ {
 		binNumber = append(binNumber, 0)
 	}
 

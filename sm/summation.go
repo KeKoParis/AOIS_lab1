@@ -4,7 +4,7 @@ package sm
 	functions for 16 bit nums
 */
 
-func Sum(num1 [16]float64, num2 [16]float64) []float64 {
+func Sum(num1 [size]float64, num2 [size]float64) []float64 {
 	firstNumber := num1[:]
 	secondNumber := num2[:]
 

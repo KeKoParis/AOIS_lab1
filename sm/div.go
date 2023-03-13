@@ -1,6 +1,8 @@
 package sm
 
-func Div(num1 [16]float64, num2 [16]float64) []float64 {
+const size = 16
+
+func Div(num1 [size]float64, num2 [size]float64) []float64 {
 	var firstNum, secondNum []float64
 	firstNum = num1[:]
 	secondNum = num2[:]
@@ -24,15 +26,15 @@ func Div(num1 [16]float64, num2 [16]float64) []float64 {
 	reverse(&secondNum)
 	addOne(&secondNum)
 
-	var divider [16]float64
+	var divider [size]float64
 
-	for i := 0; i < 16; i++ {
+	for i := 0; i < size; i++ {
 		divider[i] = secondNum[i]
 	}
 
 	for true {
 		firstNum = Sum(num1, divider)
-		for i := 0; i < 16; i++ {
+		for i := 0; i < size; i++ {
 			num1[i] = firstNum[i]
 		}
 		if firstNum[0] == 1 {
