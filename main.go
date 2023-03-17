@@ -9,14 +9,13 @@ import (
 
 func main() {
 
-	firstNumber := flag.Float64("firstNumber", 5.155, "user's first number")
-	secondNumber := flag.Float64("secondNumber", 3.25, "user's second number")
+	firstNumber := flag.Float64("firstNumber", 125.555, "user's first number")
+	secondNumber := flag.Float64("secondNumber", 15.3, "user's second number")
 	flag.Parse()
 
 	flag.Parse()
 	firstValue := *firstNumber
 	secondValue := *secondNumber
-
 	var binFloat [][]float64
 	binFloat = bno.Summation(bno.ConvertToBin(firstValue), bno.ConvertToBin(secondValue))
 	fmt.Println(binFloat, "  len mantissa ", len(binFloat[2]))
